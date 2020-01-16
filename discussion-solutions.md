@@ -1,6 +1,5 @@
 # Answers to discussion questions:
 
-
 ## Objective 1:
 
 **What happens as you vary the initial concentration of atoms?**
@@ -63,11 +62,18 @@ There are many good answers to this question, but we will provide a few:
   the surface area of the sphere surrounding the source. This is because we
   assume the source is at a point. If a human is too close, then their area
   cannot be projected onto a sphere with the assumptions of this equation.
+* This equation assumes that there is no attenuation (or removal of) particles
+  due to the material between the person and the source. In a
+  room on earth, this is likely air and this assumption is reasonable. However, as the
+  distance becomes great, air attenuation may become another non-negligble
+  factor. If, instead, the person were next to a source underwater, the
+  material attenuation would be significant and we'd have to add add an
+  additional term to this equation. 
 
 **What other functions could you write that would make this function easier to use?**
 
 Rather than calculating the person's cross-sectional area by hand, you could
-write a function that calculates the person's area given their height and with.
+write a function that calculates the person's area given their height and width.
 You could even have the inputs be in inches and then have it convert to cm! 
 
 ## Objective 3: 
