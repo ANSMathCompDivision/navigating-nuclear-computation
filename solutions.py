@@ -7,10 +7,10 @@ import matplotlib as plt
 
 def calculate_activity_with_time(nuclide_decay_constant,
                                  initial_concentration, time):
-    activity = initial_concentration * math.exp(-1.0 * nuclide_decay_constant * time)
+    activity = initial_concentration * nuclide_decay_constant * math.exp(-1.0 * nuclide_decay_constant * time)
     return activity
 
-# Solution to example question: 6.065e+23 particles/second
+# Solution to example question: 8.019e+17 particles/second
 
 ############################
 #   Objective 2 solution   #
@@ -33,7 +33,7 @@ def calculate_shield_attenuation(macroscopic_cross_section, thickness, initial_i
     particle_intensity = initial_intensity * math.exp(-1.0 * thickness * macroscopic_cross_section)
     return particle_intensity
 
-# Solution to example question: 4.4932e14 particles/second
+# Solution to example question: 4.493e14 particles/second
 
 ############################
 #   Objective 4 solution   #
@@ -46,16 +46,21 @@ def calculate_activity_of_all_effects(elapsed_time, distance_away, shield_thickn
     particle_rate = activity_time * activity_distance * activity_shield
     return particle_rate
 
-# Solution to example question: 1.003e8 particles/second
+# Solution to example question: 2.383e5 particles/second
 
 ############################
 #  Extra credit solutions  #
 ############################
 
 # Plot of activity versus time
+times = [0, 10, 20, 30]
+activity = []
+for t in times:
+    activity.append(calculate_activity_with_time(1.0, 1e15, t))
+plt.plot(activity, times)
 
-# A plot of particle rate versus distance
+# Plot of particle rate versus distance
 
-# A plot of particle intensity versus shield thickness
+# Plot of particle intensity versus shield thickness
 
-# A plot of particle intensity versus shield material
+# Plot of particle intensity versus shield material
