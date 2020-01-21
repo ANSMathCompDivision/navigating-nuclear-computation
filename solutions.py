@@ -54,33 +54,40 @@ def calculate_activity_of_all_effects(elapsed_time, distance_away, shield_thickn
 
 # Plot of activity versus time
 # Assumptions:
-times = [0, 10, 20, 30]
+times = [0, 1, 5, 10, 15, 25, 50]
 activity = []
 for t in times:
     activity.append(calculate_activity_with_time(1.0, 1e15, t))
-plt.plot(activity, times)
+plt.plot(times, activity)
+# Or on a log scale
+# plt.semilogy(times, activity)
 plt.xlabel("Time [s]")
 plt.ylabel("Activity [particles/s]")
 plt.savefig("activity-vs-time.pdf")
 
+
 # Plot of particle rate versus distance
 # Assumptions:
-distances = [0, 10, 20, 30]
+distances = [1, 10, 20, 30, 40, 50, 100]
 activity = []
 for d in distances:
     activity.append(calculate_particles_with_distance(d, 1, 1e15))
 plt.plot(distances, activity)
+# Or on a log scale
+# plt.semilogy(distances, activity)
 plt.xlabel("Distance [cm]")
 plt.ylabel("Activity [particles/s]")
 plt.savefig("activity-vs-distance.pdf")
 
 # Plot of particle intensity versus shield thickness
 # Assumptions
-thicknesses = [1, 5, 10, 20]
+thicknesses = [1, 10, 20, 30, 40, 50, 100]
 activity = []
 for t in thicknesses:
     activity.append(calculate_shield_attenuation(0.2, t, 1e15))
 plt.plot(thickness, activity)
+# Or on a log scale
+# plt.semilogy(thickness, activity)
 plt.xlabel("Thickness [cm]")
 plt.ylabel("Intensity [particles/s]")
 plt.savefig("activity-vs-thickness.pdf")
@@ -92,6 +99,8 @@ activity = []
 for m in macro_cross_section:
     activity.append(calculate_shield_attenuation(m, 10, 1e15))
 plt.plot(macro_cross_section, activity)
+# Or on a log scale
+# plt.semilogy(macro_cross_section, activity)
 plt.xlabel("Macroscopic cross section [1/cm]")
 plt.ylabel("Intensity [particles/s]")
 plt.savefig("activity-vs-material.pdf")
