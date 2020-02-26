@@ -7,6 +7,13 @@ import matplotlib.pyplot as plt
 
 def calculate_activity_with_time(nuclide_decay_constant,
                                  initial_concentration, time):
+    """
+    This function calculates the activity of a radionuclide
+
+    input: decay constant for a radionuclide [1/seconds], initial
+            concentration of atoms, time [seconds]
+    output: activity [particles/second]
+    """
     activity = initial_concentration * nuclide_decay_constant * math.exp(-1.0 * nuclide_decay_constant * time)
     return activity
 
@@ -16,8 +23,17 @@ def calculate_activity_with_time(nuclide_decay_constant,
 #   Objective 2 solution   #
 ############################
 
-# output: particle rate [particles/second]
 def calculate_particles_with_distance(distance_from_source, body_surface_area, initial_concentration):
+    """
+    This function calculates the total number of particles hitting a body at distance
+    `distance_from_source` away from the source.
+
+    Assumptions:
+    The area of a human body can be calculated as height*width.
+
+    input: distance_from_source [cm], body_surface_area [cm^2], initial concentration of atoms.
+    output: particle rate [particles/second]
+    """
     particle_rate = initial_concentration * body_surface_area / (4.0 * math.pi * distance_from_source * distance_from_source)
     return particle_rate
 
@@ -27,9 +43,15 @@ def calculate_particles_with_distance(distance_from_source, body_surface_area, i
 #   Objective 3 solution   #
 ############################
 
-# input: macroscopic_cross_section [1/cm], thickness [cm], initial_intensity [particles/second]
-# output: particle intensity [particles/second]
 def calculate_shield_attenuation(macroscopic_cross_section, thickness, initial_intensity):
+    """
+    This function calculates the change in particle rate given a shield of a
+    specific thickness.
+
+    input: macroscopic_cross_section [1/cm], thickness [cm], initial_intensity
+           [particles/second]
+    output: particle intensity [particles/second]
+    """
     particle_intensity = initial_intensity * math.exp(-1.0 * thickness * macroscopic_cross_section)
     return particle_intensity
 
